@@ -75,10 +75,8 @@ form.addEventListener('submit', e => {
         renderStuff(newNood)
     })
 
-    // fetch(`http://localhost:3000/ramens/${}`)
-
-
 })
 
 
-//   STRETCH DELIVERABLES
+
+
