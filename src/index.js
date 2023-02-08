@@ -1,7 +1,14 @@
 // write your code here
+let firstNood = [];
+
 fetch('http://localhost:3000/ramens')
 .then(res => res.json())
 .then(data => {
+    firstNood = data[0]
+
+    showMeNoods(firstNood)
+
+
     data.forEach(nood => {
         renderStuff(nood)
     })
@@ -54,7 +61,21 @@ form.addEventListener('submit', e => {
         comment: newComment
     }
 
-    renderStuff(newNood)
+    fetch('http://localhost:3000/ramens', {
+        method: "POST",
+        headers: {
+            'Content-Type': 'application/json',
+            Accept: "application/json"
+        },
+         body: JSON.stringify(newNood)
+    })
+    .then(res => res.json())
+    .then(data => {
+        console.log('success')
+        renderStuff(newNood)
+    })
+
+    // fetch(`http://localhost:3000/ramens/${}`)
 
 
 })
